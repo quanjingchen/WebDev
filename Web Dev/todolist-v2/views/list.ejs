@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>To Do List</title>
+  <script src="https://kit.fontawesome.com/4876a4e90a.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Architects+Daughter&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="heading">
+      <h1><%= listTitle %></h1>
+    </div>
+    <div class="box">
+      <% newListItems.forEach(function(item) { %>
+      <form action="/delete" method="post">
+        <div class="item">
+          <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+          <p><%=item.name%></p>
+        </div>
+        <input type="hidden" name="listName" value="<%= listTitle %>">
+      </form>
+      <% }) %>
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New item">
+        <button type="submit" name="list" value="<%= listTitle %>"><i class="fa-solid fa-paw"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Made with ❤️ by Anna Chen</p>
+  </div>
+
+</body>
+
+</html>
